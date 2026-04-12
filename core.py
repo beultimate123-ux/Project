@@ -8,7 +8,7 @@ app = FastAPI()
 async def balance():
     return {"content":"Ваш баланс 0 рублей"}
 
-@app.get("/")
+@app.get("/spin")
 async def spin():
     roll = random.randint(1, 100)
 
