@@ -20,6 +20,10 @@ async def cmd_balance(message: types.Message):
         a = r.json()
         await message.answer(str(a["content"]))
 
+@dp.message(Command("spin"))
+async def cmd_spin(message: types.Message):
+    pass
+
 async def main():
     logging.basicConfig(level=logging.INFO)
     await dp.start_polling(bot)
