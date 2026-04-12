@@ -2,7 +2,7 @@ import asyncio
 import logging
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters import Command
-import core
+import requests
 
 API_TOKEN = '8502481185:AAGHsrxFMqPkhTsfwS6Wmy3rLzhztYpPmIo'
 
@@ -15,7 +15,10 @@ async def cmd_start(message: types.Message):
 
 @dp.message(Command("balance"))
 async def cmd_balance(message: types.Message):
-    await message.answer(core.balance())
+    r = requests.get('http://127.0.0.1:8000')
+    if r.status_code == 200:
+        a = r.json()
+        await message.answer(str(a["content"]))
 
 async def main():
     logging.basicConfig(level=logging.INFO)
