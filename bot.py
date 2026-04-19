@@ -15,14 +15,24 @@ async def cmd_start(message: types.Message):
 
 @dp.message(Command("balance"))
 async def cmd_balance(message: types.Message):
-    r = requests.get('http://127.0.0.1:8000')
+    r = requests.get('http://127.0.0.1:8000/balance')
     if r.status_code == 200:
         a = r.json()
         await message.answer(str(a["content"]))
 
 @dp.message(Command("spin"))
 async def cmd_spin(message: types.Message):
-    pass
+    r = requests.get('http://127.0.0.1:8000/spin')
+    if r.status_code == 200:
+        a = r.json()
+        await message.answer(str(a["content"]))
+
+@dp.message(Command("slot"))
+async def cmd_slot(message: types.Message):
+    r = requests.get('http://127.0.0.1:8000/slot')
+    if r.status_code == 200:
+        a = r.json()
+        await message.answer(str(a["content"]))
 
 async def main():
     logging.basicConfig(level=logging.INFO)

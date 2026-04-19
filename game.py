@@ -11,7 +11,7 @@ def spin_roulette(bet_color, bet_amount):
         result = "красное"
     elif 50 <= roll <= 98:
         result = "черное"
-    else:
+    elif 99 <= roll <= 100:
         result = "зеленое"
     
     print(f"Выпало: {result}")
